@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mutharasappan Arunachalam — Electrical & Electronics Engineering student at PSG College of Technology.">
+  <title>Mutharasappan Arunachalam | EEE • PSG Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07090d; --surface:#0d1118; --surface2:#111722; --text:#f5f7fb;
+      --muted:#9ba6b5; --line:#202936; --accent:#7dd3fc; --accent2:#a78bfa;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:
+      radial-gradient(circle at 85% 10%, rgba(125,211,252,.10), transparent 28rem),
+      radial-gradient(circle at 10% 35%, rgba(167,139,250,.07), transparent 26rem),
+      var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    nav{position:sticky;top:0;z-index:10;background:rgba(7,9,13,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+    nav .inner{height:68px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:"Space Grotesk";font-weight:700;letter-spacing:.04em}
+    .brand span{color:var(--accent)}
+    .navlinks{display:flex;gap:24px;color:var(--muted);font-size:.9rem}
+    .navlinks a:hover{color:var(--text)}
+    .hero{min-height:calc(100vh - 68px);display:grid;align-items:center;padding:80px 0 90px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.82rem;background:rgba(255,255,255,.025)}
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+    h1{font-family:"Space Grotesk";font-size:clamp(3.2rem,8vw,6.8rem);line-height:.95;letter-spacing:-.065em;margin:24px 0 20px;max-width:900px}
+    h1 .accent{color:var(--accent)}
+    .lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:700px}
+    .tagline{font-family:"Space Grotesk";font-size:1.15rem;margin-top:22px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{padding:12px 17px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-weight:600;transition:.2s}
+    .btn:hover{transform:translateY(-2px);border-color:#3a4657}
+    .btn.primary{background:var(--text);color:#080a0e;border-color:var(--text)}
+    section{padding:92px 0;border-top:1px solid rgba(255,255,255,.06)}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}
+    .kicker{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    h2{font-family:"Space Grotesk";font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.04em;margin:8px 0 0}
+    .section-head p{color:var(--muted);max-width:430px;margin:0}
+    .about{display:grid;grid-template-columns:1.1fr .9fr;gap:50px}
+    .about p{font-size:1.12rem;color:#c5ccd6}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:18px;padding:25px}
+    .card h3{font-family:"Space Grotesk";margin:0 0 8px;font-size:1.15rem}
+    .card p{margin:0;color:var(--muted);font-size:.94rem}
+    .project{display:grid;grid-template-columns:110px 1fr;gap:22px;align-items:start}
+    .project-no{font-family:"Space Grotesk";font-size:3rem;color:#374151;font-weight:700}
+    .project h3{font-size:1.6rem;margin:0 0 7px;font-family:"Space Grotesk"}
+    .project p{color:var(--muted);max-width:720px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .chip{padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:#bac3cf;font-size:.78rem;background:#0b0f15}
+    .timeline{border-left:1px solid #2b3442;padding-left:24px}
+    .timeline-item{position:relative;margin-bottom:35px}
+    .timeline-item:before{content:"";position:absolute;left:-29px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    .timeline-item h3{margin:0;font-family:"Space Grotesk"}
+    .meta{color:var(--accent);font-size:.8rem;font-weight:600}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .skill-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+    .skill{padding:8px 11px;border-radius:10px;background:#0a0e14;border:1px solid var(--line);font-size:.85rem;color:#c8d0da}
+    .connect{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .linkcard{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 22px;border:1px solid var(--line);background:var(--surface);border-radius:15px}
+    .linkcard small{display:block;color:var(--muted);margin-bottom:3px}
+    .arrow{font-size:1.2rem;color:var(--accent)}
+    footer{padding:35px 0 50px;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:760px){
+      .navlinks{display:none}.hero{padding-top:60px}
+      .about,.connect,.skills{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .section-head{display:block}.section-head p{margin-top:15px}
+      .project{grid-template-columns:1fr;gap:4px}.project-no{font-size:2rem}
+      h1{font-size:clamp(3rem,16vw,5rem)}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="wrap inner">
+    <a class="brand" href="#">MA<span>.</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <header class="hero wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Electrical & Electronics Engineering • PSG Tech</div>
+      <h1>Mutharasappan <span class="accent">Arunachalam</span></h1>
+      <p class="lead">Engineering student exploring power, embedded systems, IoT, automation, and intelligent electrical systems.</p>
+      <div class="tagline">From circuits to connected systems.</div>
+      <div class="actions">
+        <a class="btn primary" href="#projects">Explore projects</a>
+        <a class="btn" href="mailto:mutharasappanarunachalam@gmail.com">Email me</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">01 — About</div><h2>Curious by nature.<br>Builder by habit.</h2></div>
+      </div>
+      <div class="about">
+        <div>
+          <p>I’m an Electrical & Electronics Engineering student at PSG College of Technology, interested in power systems, embedded systems, IoT, automation, and intelligent electrical systems.</p>
+          <p>I enjoy exploring practical engineering problems and turning ideas into working solutions.</p>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>⚡ Power & Energy</h3><p>Power systems, electrical machines, energy management and protection.</p></div>
+          <div class="card"><h3>🔌 Embedded Systems</h3><p>Microcontrollers, sensors, real-time monitoring and control.</p></div>
+          <div class="card"><h3>📡 IoT & Automation</h3><p>Connected electrical systems, remote monitoring and automation.</p></div>
+          <div class="card"><h3>🤖 Intelligent Systems</h3><p>Applying data and intelligence to practical electrical engineering problems.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">02 — Projects</div><h2>Things I’m building.</h2></div>
+        <p>Selected engineering work focused on making electrical systems more connected, observable and intelligent.</p>
+      </div>
+
+      <article class="card project">
+        <div class="project-no">01</div>
+        <div>
+          <h3>ToD Auto-Pilot</h3>
+          <div class="meta">IoT-Enabled Intelligent Load Management System</div>
+          <p>An IoT-based system designed to intelligently manage electrical loads according to Time-of-Day electricity tariffs, helping optimize energy usage and operating cost.</p>
+          <div class="chips"><span class="chip">ESP32</span><span class="chip">PZEM-004T</span><span class="chip">RTC</span><span class="chip">SSR</span><span class="chip">Relays / Contactors</span></div>
+        </div>
+      </article>
+
+      <div style="height:14px"></div>
+
+      <article class="card project">
+        <div class="project-no">02</div>
+        <div>
+          <h3>IoT Power Monitoring & Security System</h3>
+          <div class="meta">Industrial Training Project</div>
+          <p>An IoT-based power monitoring and alert system designed to identify abnormal electrical conditions and notify the power house for faster response.</p>
+          <div class="chips"><span class="chip">ESP32</span><span class="chip">Power Sensors</span><span class="chip">IoT</span><span class="chip">Web Dashboard</span><span class="chip">Data Logging</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">03 — Experience</div><h2>Where engineering meets reality.</h2></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="meta">Industrial Exposure</div>
+          <h3>Tamil Nadu Generation and Distribution Corporation Limited (TANGEDCO)</h3>
+          <p>Valuthur Gas Turbine Power Station</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">04 — Technical Areas</div><h2>Tools, systems & fundamentals.</h2></div>
+      </div>
+      <div class="skills">
+        <div class="card">
+          <h3>Electrical Engineering</h3>
+          <div class="skill-list">
+            <span class="skill">Power Systems</span><span class="skill">Electrical Machines</span><span class="skill">Power Electronics</span><span class="skill">Control Systems</span><span class="skill">Measurement & Instrumentation</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Technology</h3>
+          <div class="skill-list">
+            <span class="skill">ESP32</span><span class="skill">IoT</span><span class="skill">Sensors</span><span class="skill">Energy Monitoring</span><span class="skill">Embedded Systems</span><span class="skill">MATLAB</span><span class="skill">Web Dashboards</span><span class="skill">Data Logging</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">05 — Education</div><h2>Currently learning.</h2></div>
+      </div>
+      <div class="card">
+        <div class="meta">2025 — 2029</div>
+        <h3>B.E. (Sandwich) — Electrical & Electronics Engineering</h3>
+        <p>PSG College of Technology • Coimbatore, Tamil Nadu</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="connect">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="kicker">06 — Connect</div><h2>Let's connect.</h2></div>
+        <p>Interested in engineering, technology, projects, or collaboration? Feel free to reach out.</p>
+      </div>
+      <div class="connect">
+        <a class="linkcard" href="https://www.linkedin.com/in/mutharasappan-arunachalam/" target="_blank" rel="noopener">
+          <div><small>LinkedIn</small><strong>mutharasappanarunachalam</strong></div><span class="arrow">↗</span>
+        </a>
+        <a class="linkcard" href="https://github.com/25e910-a11y" target="_blank" rel="noopener">
+          <div><small>GitHub</small><strong>25e910-a11y</strong></div><span class="arrow">↗</span>
+        </a>
+        <a class="linkcard" href="https://www.instagram.com/the_electronomadicsoul/" target="_blank" rel="noopener">
+          <div><small>Instagram</small><strong>the_electronomadicsoul</strong></div><span class="arrow">↗</span>
+        </a>
+        <a class="linkcard" href="mailto:mutharasappanarunachalam@gmail.com?subject=Hello%20Mutharasappan" aria-label="Email Mutharasappan">
+          <div><small>Email</small><strong>mutharasappanarunachalam@gmail.com</strong></div><span class="arrow">✉</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Mutharasappan Arunachalam</span>
+  <span>From circuits to connected systems. ⚡</span>
+</footer>
+</body>
+</html>
