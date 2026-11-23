@@ -185,10 +185,6 @@
     .wave path{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
     .wave line{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
     .wave .r{stroke:var(--r)} .wave .y{stroke:var(--y)} .wave .b{stroke:var(--b)}
-    .phase-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:.82rem;color:var(--muted)}
-    .phase-key span{font-weight:700}
-    .phase-key span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:7px;vertical-align:middle;background:currentColor}
-    .phase-key .r{color:var(--r)} .phase-key .y{color:var(--y-text)} .phase-key .b{color:var(--b)}
     @media (prefers-reduced-motion:no-preference){
       .wave svg{animation:reveal 1.6s cubic-bezier(.45,0,.2,1) .2s both}
       @keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
@@ -361,7 +357,6 @@
         <path class="y"></path>
         <path class="b"></path>
       </svg>
-      <div class="phase-key"><span class="r">R</span><span class="y">Y</span><span class="b">B</span>Three-phase supply, 120° apart</div>
     </div>
   </div>
 
