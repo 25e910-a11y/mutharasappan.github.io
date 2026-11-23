@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mutharasappan Arunachalam | EEE, PSG Tech</title>
   <meta name="description" content="Mutharasappan Arunachalam, Electrical and Electronics Engineering student at PSG College of Technology, Coimbatore. Projects in power monitoring, fault localisation and load management.">
+  <meta name="theme-color" content="#ECEEE9">
 
-  <!-- Link preview on LinkedIn / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mutharasappan Arunachalam | EEE, PSG Tech">
   <meta property="og:description" content="EEE student at PSG College of Technology. GridSense (Vishwakarma Awards Stage 3), 1st at Sparkathon 2.0, Concetto'26.">
@@ -14,364 +14,471 @@
   <meta property="og:url" content="https://25e910-a11y.github.io/mutharasappan.github.io/">
   <meta name="twitter:card" content="summary">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2307090d'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%237dd3fc' font-family='Arial' font-weight='700'>MA</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231C211E'/><path d='M8 32 Q17 12 26 32 T44 32 T62 32' fill='none' stroke='%23C62F2A' stroke-width='5' stroke-linecap='round'/><path d='M2 32 Q11 52 20 32 T38 32 T56 32' fill='none' stroke='%23E0A100' stroke-width='5' stroke-linecap='round'/></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+
   <style>
+    /*
+      Design notes
+      - Palette from Indian switchgear: light panel grey, insulator white,
+        and the R / Y / B phase colours. Phase colours appear only where they
+        mean something: the waveform and the three competition stages.
+      - Project status lamps follow panel indicator convention:
+        green = built, amber = in progress, white = design only.
+      - One typeface, Archivo: expanded width for display, normal width for text.
+    */
     :root{
-      --bg:#07090d; --surface:#0d1118; --text:#f5f7fb;
-      --muted:#9ba6b5; --line:#202936; --accent:#7dd3fc; --gold:#fbbf24;
-      --max:1080px;
+      --panel:#ECEEE9;
+      --white:#F8F9F6;
+      --ink:#1C211E;
+      --text:#323a35;
+      --muted:#59625C;
+      --rule:#CBD0C8;
+      --r:#C62F2A;
+      --y:#D99A00;
+      --b:#1E56A0;
+      --lamp-green:#2E8B4A;
+      --lamp-amber:#E0A100;
+      --max:1120px;
+      --gutter:clamp(18px,4vw,40px);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:70px}
-    body{margin:0;background:
-      radial-gradient(circle at 85% 10%, rgba(125,211,252,.10), transparent 28rem),
-      radial-gradient(circle at 10% 35%, rgba(167,139,250,.06), transparent 26rem),
-      var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65}
-    a{color:inherit;text-decoration:none}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--panel);color:var(--ink);
+      font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;
+      font-variation-settings:"wdth" 100}
+    a{color:inherit}
     img{max-width:100%;display:block}
-    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    :focus-visible{outline:2px solid var(--b);outline-offset:3px;border-radius:3px}
+    .wrap{width:min(100% - 2*var(--gutter),var(--max));margin-inline:auto}
+    .skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--white);padding:8px 12px;border-radius:6px;z-index:20}
+    .skip:focus{left:12px}
+    p{margin:0 0 1em}
+    .muted{color:var(--muted)}
 
-    nav{position:sticky;top:0;z-index:10;background:rgba(7,9,13,.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-    nav .inner{height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{font-family:"Space Grotesk";font-weight:700;letter-spacing:.04em;flex-shrink:0}
-    .brand span{color:var(--accent)}
-    .navlinks{display:flex;gap:22px;color:var(--muted);font-size:.88rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-    .navlinks::-webkit-scrollbar{display:none}
-    .navlinks a:hover{color:var(--text)}
+    /* Top bar */
+    .bar{position:sticky;top:0;z-index:10;background:rgba(236,238,233,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+    .bar .inner{height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .bar .name{font-weight:700;font-variation-settings:"wdth" 112;text-decoration:none;white-space:nowrap;font-size:.98rem}
+    .bar nav{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font-size:.92rem}
+    .bar nav::-webkit-scrollbar{display:none}
+    .bar nav a{text-decoration:none;color:var(--muted);white-space:nowrap;padding:4px 0}
+    .bar nav a:hover{color:var(--ink)}
 
-    .hero{padding:90px 0 80px;display:grid;grid-template-columns:1.4fr .8fr;gap:50px;align-items:center}
-    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.82rem;background:rgba(255,255,255,.025)}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
-    h1{font-family:"Space Grotesk";font-size:clamp(2.8rem,7vw,5.6rem);line-height:.95;letter-spacing:-.05em;margin:22px 0 20px}
-    h1 .accent{color:var(--accent)}
-    .lead{font-size:clamp(1.02rem,1.8vw,1.2rem);color:#c5ccd6;max-width:620px;margin:0}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .btn{padding:11px 17px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-weight:600;font-size:.95rem;transition:.2s}
-    .btn:hover{transform:translateY(-2px);border-color:#3a4657}
-    .btn.primary{background:var(--text);color:#080a0e;border-color:var(--text)}
-    .photo{border-radius:24px;border:1px solid var(--line);overflow:hidden;aspect-ratio:1/1;max-width:340px;justify-self:end;width:100%}
-    .photo img{width:100%;height:100%;object-fit:cover}
+    /* Hero */
+    .hero{padding:clamp(48px,8vw,96px) 0 clamp(48px,7vw,80px)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:clamp(28px,5vw,64px);align-items:start;margin-top:clamp(28px,4vw,44px)}
+    /* Sized so "Mutharasappan" (about 9.7em wide at full expanded width) always fits the column */
+    h1{margin:0;font-weight:850;font-variation-settings:"wdth" 125;
+      font-size:clamp(1.6rem,calc((min(100vw,1200px) - 2*var(--gutter)) / 10.2),7rem);line-height:.9;letter-spacing:-.02em}
+    h1 span{display:block}
+    .intro{margin:0;max-width:34em;font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--text)}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .btn{display:inline-block;padding:11px 18px;border-radius:8px;border:1.5px solid var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;transition:background .15s,color .15s}
+    .btn.solid{background:var(--ink);color:var(--white)}
+    .btn.solid:hover{background:#000}
+    .btn.line:hover{background:var(--ink);color:var(--white)}
+    .portrait{margin:0}
+    .portrait img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:6px;border:1px solid var(--rule);background:var(--white)}
+    .portrait figcaption{margin-top:10px;font-size:.84rem;color:var(--muted);line-height:1.45}
 
-    .highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
-    .hl{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.02)}
-    .hl b{display:block;font-family:"Space Grotesk";font-size:1.05rem}
-    .hl span{color:var(--muted);font-size:.84rem}
+    /* The waveform: the one bold element on the page */
+    .wave{margin-top:clamp(40px,6vw,64px)}
+    .wave svg{display:block;width:100%;height:clamp(90px,13vw,140px)}
+    .wave path{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
+    .wave line{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
+    .wave .r{stroke:var(--r)} .wave .y{stroke:var(--y)} .wave .b{stroke:var(--b)}
+    .phase-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:.82rem;color:var(--muted)}
+    .phase-key span{font-weight:700}
+    .phase-key span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:7px;vertical-align:middle;background:currentColor}
+    .phase-key .r{color:var(--r)} .phase-key .y{color:#8a6200} .phase-key .b{color:var(--b)}
+    @media (prefers-reduced-motion:no-preference){
+      .wave svg{animation:reveal 1.6s cubic-bezier(.45,0,.2,1) .2s both}
+      @keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+    }
 
-    section{padding:84px 0;border-top:1px solid rgba(255,255,255,.06)}
-    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}
-    .kicker{color:var(--accent);font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    h2{font-family:"Space Grotesk";font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.08;letter-spacing:-.03em;margin:8px 0 0}
-    .section-head p{color:var(--muted);max-width:430px;margin:0}
+    /* Sections */
+    section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--rule)}
+    .sec-head{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(20px,4vw,48px)}
+    h2{margin:0;font-weight:800;font-variation-settings:"wdth" 118;font-size:clamp(1.6rem,2.8vw,2.15rem);line-height:1.1;letter-spacing:-.01em}
+    h3{margin:0;font-weight:700;font-variation-settings:"wdth" 108;font-size:1.25rem;line-height:1.25}
+    .sec-note{margin-top:12px;font-size:.92rem;color:var(--muted);max-width:20em}
+    .sec-body{min-width:0}
 
-    .about{display:grid;grid-template-columns:1.2fr .8fr;gap:46px}
-    .about p{font-size:1.06rem;color:#c5ccd6;margin-top:0}
-    .facts{display:grid;gap:10px;align-content:start}
-    .fact{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:10px 0;font-size:.94rem}
-    .fact span:first-child{color:var(--muted)}
-    .fact span:last-child{text-align:right}
+    /* About */
+    .about-text{max-width:36em}
+    .about-text p{font-size:1.08rem;color:var(--text)}
+    .facts{margin:28px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+    .facts div{padding:14px 16px 0 0}
+    .facts dt{font-size:.82rem;color:var(--muted)}
+    .facts dd{margin:4px 0 0;font-weight:600;line-height:1.35}
 
-    .card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:18px;padding:24px}
-    .card h3{font-family:"Space Grotesk";margin:0 0 6px;font-size:1.15rem}
-    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    /* Competitions */
+    .wins{list-style:none;margin:0;padding:0}
+    .win{display:grid;grid-template-columns:175px minmax(0,1fr) auto;gap:24px;padding:24px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+    .win:first-child{padding-top:0}
+    .rank{font-weight:850;font-variation-settings:"wdth" 125;font-size:2.1rem;line-height:1;letter-spacing:-.02em;white-space:nowrap}
+    .rank sup{font-size:.5em;font-weight:700;vertical-align:.7em;margin-left:1px}
+    .win p{margin:6px 0 0;color:var(--text);max-width:40em}
+    .when{font-size:.88rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 
-    .awards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .award .place{display:inline-block;font-family:"Space Grotesk";font-weight:700;font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid rgba(251,191,36,.35);color:var(--gold);margin-bottom:12px}
-    .award .when{color:var(--accent);font-size:.8rem;font-weight:600;margin-top:12px}
+    .stages{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:640px}
+    .stages li{border-top:4px solid var(--c);padding-top:8px;font-size:.9rem;line-height:1.4}
+    .stages li:nth-child(1){--c:var(--r)} .stages li:nth-child(2){--c:var(--y)} .stages li:nth-child(3){--c:var(--b)}
+    .stages b{display:block;font-weight:700}
+    .stages span{color:var(--muted)}
 
-    .projects{display:grid;gap:14px}
-    .project{display:grid;grid-template-columns:90px 1fr;gap:20px;align-items:start}
-    .project-no{font-family:"Space Grotesk";font-size:2.6rem;color:#374151;font-weight:700;line-height:1}
-    .project h3{font-size:1.45rem}
-    .meta{color:var(--accent);font-size:.8rem;font-weight:600}
-    .project p{margin-top:10px;max-width:740px}
-    .project ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:.93rem;max-width:740px}
-    .project li{margin-bottom:4px}
-    .status{display:inline-block;margin-left:8px;font-size:.72rem;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:#c8d0da;vertical-align:middle}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-    .chip{padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:#bac3cf;font-size:.76rem;background:#0b0f15}
+    .roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:36px}
+    .role{background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:20px 22px}
+    .role p{margin:4px 0 0;color:var(--muted);font-size:.95rem}
 
-    .timeline{border-left:1px solid #2b3442;padding-left:24px}
-    .timeline-item{position:relative;margin-bottom:34px}
-    .timeline-item:last-child{margin-bottom:0}
-    .timeline-item:before{content:"";position:absolute;left:-29px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
-    .timeline-item h3{margin:2px 0 2px;font-family:"Space Grotesk";font-size:1.2rem}
-    .timeline-item .org{color:#c5ccd6;font-size:.95rem}
-    .timeline-item ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:.93rem;max-width:760px}
-    .timeline-item li{margin-bottom:4px}
+    /* Projects */
+    .project{padding:32px 0;border-bottom:1px solid var(--rule)}
+    .project:first-child{padding-top:0}
+    .project:last-child{border-bottom:0;padding-bottom:0}
+    .project-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px}
+    .project h3{font-size:clamp(1.3rem,2.2vw,1.6rem);font-variation-settings:"wdth" 115;font-weight:800}
+    .lamp{display:inline-flex;align-items:center;gap:9px;font-size:.86rem;color:var(--muted);white-space:nowrap}
+    .lamp::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--l);box-shadow:0 0 0 3px color-mix(in srgb,var(--l) 25%,transparent)}
+    .lamp.built{--l:var(--lamp-green)}
+    .lamp.progress{--l:var(--lamp-amber)}
+    .lamp.design{--l:#fff}
+    .lamp.design::before{box-shadow:0 0 0 1.5px #9aa39d}
+    .context{margin:6px 0 0;font-size:.92rem;color:var(--muted)}
+    .project .desc{margin:14px 0 0;max-width:42em;color:var(--text)}
+    .project ul{margin:12px 0 0;padding-left:20px;max-width:42em;color:var(--text)}
+    .project li{margin-bottom:6px}
+    .parts{margin:14px 0 0;font-size:.9rem;color:var(--muted)}
+    .parts b{color:var(--ink);font-weight:600}
 
-    .two{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .skill-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
-    .skill{padding:7px 11px;border-radius:10px;background:#0a0e14;border:1px solid var(--line);font-size:.85rem;color:#c8d0da}
+    .flow{display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;margin:18px 0 4px;font-size:.86rem}
+    .flow span{background:var(--white);border:1px solid var(--rule);border-radius:6px;padding:6px 10px;white-space:nowrap}
+    .flow i{width:22px;height:1.5px;background:var(--ink);position:relative;flex:none}
+    .flow i::after{content:"";position:absolute;right:-1px;top:-3.5px;border:4px solid transparent;border-left:6px solid var(--ink);border-right:0}
 
-    .connect{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .linkcard{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 22px;border:1px solid var(--line);background:var(--surface);border-radius:15px;transition:.2s;min-width:0}
-    .linkcard:hover{border-color:#3a4657}
-    .linkcard div{min-width:0}
-    .linkcard small{display:block;color:var(--muted);margin-bottom:2px}
-    .linkcard strong{display:block;overflow-wrap:anywhere;font-weight:600}
-    .arrow{font-size:1.2rem;color:var(--accent)}
-    footer{padding:32px 0 46px;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    /* Training timeline */
+    .timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
+    .timeline > li{position:relative;padding:0 0 36px 26px}
+    .timeline > li:last-child{padding-bottom:0}
+    .timeline > li::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:2px solid var(--ink)}
+    .timeline .org{margin:2px 0 0;color:var(--text)}
+    .timeline ul{margin:10px 0 0;padding-left:20px;color:var(--text);max-width:42em}
+    .timeline ul li{margin-bottom:6px}
+    .timeline .when{display:block;margin-bottom:4px}
 
-    @media(max-width:860px){
-      .hero{grid-template-columns:1fr;padding-top:50px;gap:34px}
-      .photo{justify-self:start;max-width:220px;order:-1}
-      .highlights,.awards,.two,.about,.connect{grid-template-columns:1fr}
-      .section-head{display:block}.section-head p{margin-top:12px}
-      .project{grid-template-columns:1fr;gap:6px}.project-no{font-size:1.8rem}
-      .navlinks{gap:16px;font-size:.84rem}
+    /* Skills and education */
+    .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
+    .cols h3{font-size:1.05rem;margin-bottom:8px}
+    .list-inline{margin:0;padding:0;list-style:none;line-height:1.9;color:var(--text)}
+    .list-inline li{display:inline}
+    .list-inline li:not(:last-child)::after{content:",";margin-right:.35em}
+    .edu{list-style:none;margin:40px 0 0;padding:0}
+    .edu li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:16px 0;border-top:1px solid var(--rule)}
+    .edu p{margin:2px 0 0;color:var(--muted)}
+
+    /* Contact */
+    .contact-lead{font-size:clamp(1.25rem,2.4vw,1.65rem);font-weight:700;font-variation-settings:"wdth" 108;line-height:1.3;margin:0 0 24px;max-width:26em}
+    .contact-lead a{text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:var(--b);overflow-wrap:anywhere}
+    .links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .links a{display:block;padding:14px 16px;border:1px solid var(--rule);background:var(--white);border-radius:8px;text-decoration:none}
+    .links a:hover{border-color:var(--ink)}
+    .links small{display:block;color:var(--muted);font-size:.82rem}
+    .links b{font-weight:600;overflow-wrap:anywhere}
+
+    footer{border-top:1px solid var(--rule);padding:26px 0 40px;font-size:.86rem;color:var(--muted)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .portrait{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center}
+      .portrait figcaption{margin:0}
+      .sec-head{grid-template-columns:1fr;gap:22px}
+      .sec-note{max-width:none}
+      .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .win{grid-template-columns:1fr;gap:8px}
+      .win .when{grid-column:auto}
+      .rank{font-size:1.6rem}
+      .roles,.cols,.links{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      body{font-size:16px}
+      .bar .name{font-size:.9rem}
+      .stages{grid-template-columns:1fr}
+      .edu li{grid-template-columns:1fr;gap:4px}
     }
   </style>
 </head>
 <body>
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
   <div class="wrap inner">
-    <a class="brand" href="#">MA<span>.</span></a>
-    <div class="navlinks">
+    <a class="name" href="#top">Mutharasappan A.</a>
+    <nav aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#achievements">Achievements</a>
+      <a href="#competitions">Competitions</a>
       <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
+      <a href="#training">Training</a>
       <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#connect">Contact</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero wrap" id="top">
+    <h1><span>Mutharasappan</span><span>Arunachalam</span></h1>
+    <div class="hero-grid">
+      <div>
+        <p class="intro">EEE student at PSG College of Technology, Coimbatore. I build hardware that measures electrical power, finds faults, and shifts loads to cheaper hours.</p>
+        <div class="actions">
+          <a class="btn solid" href="#projects">See projects</a>
+          <a class="btn line" href="mailto:mutharasappanarunachalam@gmail.com">Email me</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="assets/photo.jpg" alt="Mutharasappan Arunachalam" width="600" height="600">
+        <figcaption>B.E. (Sandwich), Electrical &amp; Electronics Engineering, 2025 to 2029</figcaption>
+      </figure>
+    </div>
+
+    <div class="wave" aria-hidden="true">
+      <svg id="wave" viewBox="0 0 1000 120" preserveAspectRatio="none">
+        <line x1="0" y1="60" x2="1000" y2="60"></line>
+        <path class="r"></path>
+        <path class="y"></path>
+        <path class="b"></path>
+      </svg>
+      <div class="phase-key"><span class="r">R</span><span class="y">Y</span><span class="b">B</span>Three-phase supply, 120° apart</div>
     </div>
   </div>
-</nav>
-
-<main>
-  <header class="hero wrap">
-    <div>
-      <div class="eyebrow"><span class="dot"></span> B.E. Electrical &amp; Electronics Engineering, PSG Tech</div>
-      <h1>Mutharasappan <span class="accent">Arunachalam</span></h1>
-      <p class="lead">I'm an EEE student at PSG College of Technology, Coimbatore. Most of what I build is about measuring electrical power, finding faults, and using electricity more cheaply.</p>
-      <div class="actions">
-        <a class="btn primary" href="#projects">See my projects</a>
-        <a class="btn" href="mailto:mutharasappanarunachalam@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/mutharasappan-arunachalam/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <div class="highlights">
-        <div class="hl"><b>1st Place</b><span>Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad</span></div>
-        <div class="hl"><b>3rd Place</b><span>Aeroglide, Concetto'26, IIT (ISM) Dhanbad</span></div>
-        <div class="hl"><b>Stage 3</b><span>Vishwakarma Awards 2026-27, with GridSense</span></div>
-      </div>
-    </div>
-    <div class="photo"><img src="assets/photo.jpg" alt="Photo of Mutharasappan Arunachalam" width="600" height="600"></div>
-  </header>
 
   <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">01 / About</div><h2>A bit about me.</h2></div>
-      </div>
-      <div class="about">
-        <div>
+    <div class="wrap sec-head">
+      <h2>About</h2>
+      <div class="sec-body">
+        <div class="about-text">
           <p>I did my Diploma in EEE at Annamalai Polytechnic College and joined the B.E. (Sandwich) programme at PSG Tech in 2025. I like hands-on electrical and electronics work: building circuits, wiring them up and testing them.</p>
           <p>I've done industrial training at a TANGEDCO gas turbine power station and in the electrical department of a cotton mill. My projects are mostly about power monitoring, fault finding and load management.</p>
           <p>Outside class, I handle event resources for the EEE Association and do photography for the Yuva Tourism Club. I also photograph the heritage of Chettinad, where I'm from.</p>
         </div>
-        <div class="facts">
-          <div class="fact"><span>Based in</span><span>Coimbatore, Tamil Nadu</span></div>
-          <div class="fact"><span>Studying</span><span>B.E. EEE (Sandwich), 2025 to 2029</span></div>
-          <div class="fact"><span>Interested in</span><span>Power systems, energy monitoring, embedded and IoT</span></div>
-          <div class="fact"><span>Currently</span><span>Building the GridSense prototype</span></div>
-        </div>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Coimbatore, Tamil Nadu</dd></div>
+          <div><dt>Studying</dt><dd>B.E. EEE (Sandwich)</dd></div>
+          <div><dt>Interested in</dt><dd>Power systems, energy monitoring, embedded and IoT</dd></div>
+          <div><dt>Working on</dt><dd>GridSense prototype</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <section id="achievements">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">02 / Achievements</div><h2>Competitions.</h2></div>
-      </div>
-      <div class="awards">
-        <div class="card award">
-          <div class="place">1st Place</div>
-          <h3>Sparkathon 2.0, Concetto'26</h3>
-          <p>IIT (ISM) Dhanbad. Our team, PSG CT 2, won the final round with a system that catches plastic in rivers without trapping fish and traces the waste back to where it enters.</p>
-          <div class="when">October 2026</div>
-        </div>
-        <div class="card award">
-          <div class="place">3rd Place</div>
-          <h3>Aeroglide, Concetto'26</h3>
-          <p>IIT (ISM) Dhanbad, at the centenary edition of the institute's techno-management fest.</p>
-          <div class="when">October 2026</div>
-        </div>
-        <div class="card award">
-          <div class="place">Stage 3</div>
-          <h3>Vishwakarma Awards 2026-27</h3>
-          <p>Maker Bhavan Foundation, Sustainable Energy theme. Our entry, GridSense, was shortlisted from 3,600+ applications in Stage 1, cleared the Design Development stage, and is now in Prototype Development.</p>
-          <div class="when">September to November 2026</div>
-        </div>
-        <div class="card award">
-          <div class="place">Leadership</div>
-          <h3>Campus roles</h3>
-          <p>Event Resource Management (ERM) Head, Electrical and Electronics Engineering Association (EEEA), PSG Tech. Photography Head, Yuva Tourism Club.</p>
-          <div class="when">2026 to present</div>
+  <section id="competitions">
+    <div class="wrap sec-head">
+      <h2>Competitions and roles</h2>
+      <div class="sec-body">
+        <ol class="wins">
+          <li class="win">
+            <div class="rank">1<sup>st</sup></div>
+            <div>
+              <h3>Sparkathon 2.0, Concetto'26</h3>
+              <p>IIT (ISM) Dhanbad. Our team, PSG CT 2, won the final round with a system that catches plastic in rivers without trapping fish and traces the waste back to where it enters.</p>
+            </div>
+            <div class="when">Oct 2026</div>
+          </li>
+          <li class="win">
+            <div class="rank">3<sup>rd</sup></div>
+            <div>
+              <h3>Aeroglide, Concetto'26</h3>
+              <p>IIT (ISM) Dhanbad, at the centenary edition of the institute's techno-management fest.</p>
+            </div>
+            <div class="when">Oct 2026</div>
+          </li>
+          <li class="win">
+            <div class="rank">Stage 3</div>
+            <div>
+              <h3>Vishwakarma Awards 2026-27</h3>
+              <p>Maker Bhavan Foundation, Sustainable Energy theme. Our entry is GridSense.</p>
+              <ol class="stages" aria-label="Progress through the stages">
+                <li><b>Stage 1, Proposal</b><span>Shortlisted from 3,600+ applications, Sep 2026</span></li>
+                <li><b>Stage 2, Design</b><span>Cleared, Nov 2026</span></li>
+                <li><b>Stage 3, Prototype</b><span>In progress, due Dec 2026</span></li>
+              </ol>
+            </div>
+            <div class="when">2026</div>
+          </li>
+        </ol>
+
+        <div class="roles">
+          <div class="role">
+            <h3>ERM Head</h3>
+            <p>Event Resource Management, Electrical and Electronics Engineering Association (EEEA), PSG Tech. 2026 to present.</p>
+          </div>
+          <div class="role">
+            <h3>Photography Head</h3>
+            <p>Yuva Tourism Club. 2026 to present.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">03 / Projects</div><h2>What I've built.</h2></div>
-        <p>Newest first.</p>
+    <div class="wrap sec-head">
+      <div>
+        <h2>Projects</h2>
+        <p class="sec-note">Each status light works like a panel indicator. Green: built. Amber: in progress. White: design only.</p>
       </div>
-
-      <div class="projects">
-        <article class="card project">
-          <div class="project-no">01</div>
-          <div>
-            <h3>GridSense <span class="status">Prototype in progress</span></h3>
-            <div class="meta">Power monitoring and fault localisation | Vishwakarma Awards 2026-27</div>
-            <p>A system that monitors a power network and narrows down where a fault has happened. Our team is building the working prototype for the Stage 3 submission in December 2026.</p>
-            <div class="chips"><span class="chip">Smart Grids</span><span class="chip">Decentralised Power Distribution</span><span class="chip">Fault Localisation</span><span class="chip">Power Monitoring</span></div>
+      <div class="sec-body">
+        <article class="project">
+          <div class="project-head">
+            <h3>GridSense</h3>
+            <span class="lamp progress">Prototype in progress</span>
           </div>
+          <p class="context">Power monitoring and fault localisation. Vishwakarma Awards 2026-27 entry, Smart Grids &amp; Decentralised Power Distribution.</p>
+          <p class="desc">A system that monitors a power network and narrows down where a fault has happened. Our team is building the working prototype for the Stage 3 submission in December 2026.</p>
         </article>
 
-        <article class="card project">
-          <div class="project-no">02</div>
-          <div>
-            <h3>River Waste Capture and Pollution Source Localisation <span class="status">Design | 1st place</span></h3>
-            <div class="meta">Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad | Team PSG CT 2</div>
-            <p>Cleanup usually starts after the waste is already in the river. We designed a network that catches plastic safely and also points to the stretch of river it is coming from.</p>
-            <ul>
-              <li>Collector node with a camera and on-device model. Waste is diverted; fish and anything the model isn't sure about pass through.</li>
-              <li>Floating walls let fish escape underneath, with a bubble, sound and LED barrier to steer them away.</li>
-              <li>Source tracing borrowed from power lines: like a travelling-wave fault locator, waste counts, flow and travel time between nodes rank the likely source segments.</li>
-              <li>Low-cost solar sensor nodes send data over LoRa to a gateway, server and map dashboard for authorities.</li>
-            </ul>
-            <div class="chips"><span class="chip">ESP32-S3</span><span class="chip">LoRa</span><span class="chip">MQTT</span><span class="chip">YOLO-nano</span><span class="chip">Solar + MPPT</span></div>
+        <article class="project">
+          <div class="project-head">
+            <h3>River waste capture and pollution source localisation</h3>
+            <span class="lamp design">Design, won 1st place</span>
           </div>
+          <p class="context">Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad. Team PSG CT 2.</p>
+          <p class="desc">Cleanup usually starts after the waste is already in the river. We designed a network that catches plastic safely and also points to the stretch of river it is coming from.</p>
+          <ul>
+            <li>Collector node with a camera and on-device model. Waste is diverted; fish and anything the model isn't sure about pass through.</li>
+            <li>Floating walls let fish escape underneath, with a bubble, sound and LED barrier to steer them away.</li>
+            <li>Source tracing borrowed from power lines: like a travelling-wave fault locator, waste counts, flow and travel time between nodes rank the likely source segments.</li>
+          </ul>
+          <div class="flow" role="img" aria-label="Data path: sensor nodes, LoRa, gateway, server, map dashboard">
+            <span>Sensor nodes</span><i></i><span>LoRa</span><i></i><span>Gateway</span><i></i><span>Server</span><i></i><span>Map dashboard</span>
+          </div>
+          <p class="parts"><b>Parts and tools:</b> ESP32-S3, LoRa, MQTT, YOLO-nano, solar with MPPT</p>
         </article>
 
-        <article class="card project">
-          <div class="project-no">03</div>
-          <div>
-            <h3>ToD Auto-Pilot <span class="status">Built | v2</span></h3>
-            <div class="meta">Load management for Time-of-Day tariffs</div>
-            <p>Electricity costs more at peak hours under Time-of-Day tariffs. ToD Auto-Pilot moves loads that can wait into the cheaper hours to bring the bill down. The second version monitors and controls three loads at a time.</p>
-            <div class="chips"><span class="chip">ESP32</span><span class="chip">PZEM-004T</span><span class="chip">RTC</span><span class="chip">SSR</span><span class="chip">Relays / Contactors</span></div>
+        <article class="project">
+          <div class="project-head">
+            <h3>ToD Auto-Pilot</h3>
+            <span class="lamp built">Built, version 2</span>
           </div>
+          <p class="context">Load management for Time-of-Day tariffs.</p>
+          <p class="desc">Electricity costs more at peak hours under Time-of-Day tariffs. ToD Auto-Pilot moves loads that can wait into the cheaper hours to bring the bill down. The second version monitors and controls three loads at a time.</p>
+          <p class="parts"><b>Parts:</b> ESP32, PZEM-004T, RTC, SSR, relays and contactors</p>
         </article>
 
-        <article class="card project">
-          <div class="project-no">04</div>
-          <div>
+        <article class="project">
+          <div class="project-head">
             <h3>IoT Power Monitoring and Security System</h3>
-            <div class="meta">Industrial training project</div>
-            <p>Watches the electrical supply for abnormal conditions and alerts the power house so the problem can be handled sooner.</p>
-            <div class="chips"><span class="chip">ESP32</span><span class="chip">Power Sensors</span><span class="chip">IoT</span><span class="chip">Web Dashboard</span><span class="chip">Data Logging</span></div>
           </div>
+          <p class="context">Industrial training project.</p>
+          <p class="desc">Watches the electrical supply for abnormal conditions and alerts the power house so the problem can be handled sooner.</p>
+          <p class="parts"><b>Parts and tools:</b> ESP32, power sensors, web dashboard, data logging</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">04 / Experience</div><h2>Industrial training.</h2></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="meta">Nov 2024 to Dec 2024 | On-site</div>
-          <h3>Electrical Engineering Intern</h3>
-          <div class="org">TANGEDCO, Valuthur Gas Turbine Power Station</div>
-          <ul>
-            <li>Saw open cycle and combined cycle gas turbine operation up close.</li>
-            <li>Studied turbo-generator excitation systems and grid synchronisation.</li>
-            <li>Learned how the plant's Distributed Control System (DCS) is used to monitor generation in real time.</li>
-          </ul>
-        </div>
-        <div class="timeline-item">
-          <div class="meta">May 2024 | On-site</div>
-          <h3>Electrical Engineering Intern</h3>
-          <div class="org">Sri Nachammai Cotton Mills Ltd., Karaikkudi</div>
-          <ul>
-            <li>Worked with the electrical maintenance team of a large textile mill.</li>
-            <li>Learned motor control, power supply management for textile machinery and electrical safety practice on the shop floor.</li>
-          </ul>
-        </div>
+  <section id="training">
+    <div class="wrap sec-head">
+      <h2>Industrial training</h2>
+      <div class="sec-body">
+        <ol class="timeline">
+          <li>
+            <span class="when">Nov 2024 to Dec 2024, on-site</span>
+            <h3>Electrical Engineering Intern</h3>
+            <p class="org">TANGEDCO, Valuthur Gas Turbine Power Station</p>
+            <ul>
+              <li>Saw open cycle and combined cycle gas turbine operation up close.</li>
+              <li>Studied turbo-generator excitation systems and grid synchronisation.</li>
+              <li>Learned how the plant's Distributed Control System (DCS) is used to monitor generation in real time.</li>
+            </ul>
+          </li>
+          <li>
+            <span class="when">May 2024, on-site</span>
+            <h3>Electrical Engineering Intern</h3>
+            <p class="org">Sri Nachammai Cotton Mills Ltd., Karaikkudi</p>
+            <ul>
+              <li>Worked with the electrical maintenance team of a large textile mill.</li>
+              <li>Learned motor control, power supply management for textile machinery and electrical safety practice on the shop floor.</li>
+            </ul>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
   <section id="skills">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">05 / Skills</div><h2>Tools and fundamentals.</h2></div>
-      </div>
-      <div class="two">
-        <div class="card">
-          <h3>Electrical</h3>
-          <div class="skill-list">
-            <span class="skill">Power Systems</span><span class="skill">Electrical Machines</span><span class="skill">Power Electronics</span><span class="skill">Control Systems</span><span class="skill">Measurement &amp; Instrumentation</span><span class="skill">Electrical Maintenance</span>
+    <div class="wrap sec-head">
+      <h2>Skills and education</h2>
+      <div class="sec-body">
+        <div class="cols">
+          <div>
+            <h3>Electrical</h3>
+            <ul class="list-inline">
+              <li>Power systems</li><li>Electrical machines</li><li>Power electronics</li><li>Control systems</li><li>Measurement and instrumentation</li><li>Electrical maintenance</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hardware and tools</h3>
+            <ul class="list-inline">
+              <li>ESP32</li><li>IoT</li><li>Sensors</li><li>Energy monitoring</li><li>Embedded systems</li><li>MATLAB</li><li>Web dashboards</li><li>Data logging</li>
+            </ul>
           </div>
         </div>
-        <div class="card">
-          <h3>Hardware and tools</h3>
-          <div class="skill-list">
-            <span class="skill">ESP32</span><span class="skill">IoT</span><span class="skill">Sensors</span><span class="skill">Energy Monitoring</span><span class="skill">Embedded Systems</span><span class="skill">MATLAB</span><span class="skill">Web Dashboards</span><span class="skill">Data Logging</span>
-          </div>
-        </div>
+        <ul class="edu" id="education">
+          <li>
+            <div><h3>B.E. (Sandwich), Electrical &amp; Electronics Engineering</h3><p>PSG College of Technology, Coimbatore</p></div>
+            <span class="when">2025 to 2029</span>
+          </li>
+          <li>
+            <div><h3>Diploma, Electrical &amp; Electronics Engineering</h3><p>Annamalai Polytechnic College</p></div>
+            <span class="when">2022 to 2025</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="education">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">06 / Education</div><h2>Education.</h2></div>
-      </div>
-      <div class="two">
-        <div class="card">
-          <div class="meta">2025 to 2029</div>
-          <h3>B.E. (Sandwich), Electrical &amp; Electronics Engineering</h3>
-          <p>PSG College of Technology, Coimbatore</p>
-        </div>
-        <div class="card">
-          <div class="meta">2022 to 2025</div>
-          <h3>Diploma, Electrical &amp; Electronics Engineering</h3>
-          <p>Annamalai Polytechnic College</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="connect">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="kicker">07 / Contact</div><h2>Get in touch.</h2></div>
-        <p>Happy to talk about projects, internships or anything around power and electronics.</p>
-      </div>
-      <div class="connect">
-        <a class="linkcard" href="mailto:mutharasappanarunachalam@gmail.com">
-          <div><small>Email</small><strong>mutharasappanarunachalam@gmail.com</strong></div><span class="arrow">✉</span>
-        </a>
-        <a class="linkcard" href="https://www.linkedin.com/in/mutharasappan-arunachalam/" target="_blank" rel="noopener">
-          <div><small>LinkedIn</small><strong>mutharasappan-arunachalam</strong></div><span class="arrow">↗</span>
-        </a>
-        <a class="linkcard" href="https://github.com/25e910-a11y" target="_blank" rel="noopener">
-          <div><small>GitHub</small><strong>25e910-a11y</strong></div><span class="arrow">↗</span>
-        </a>
-        <a class="linkcard" href="https://www.instagram.com/the_electronomadicsoul/" target="_blank" rel="noopener">
-          <div><small>Instagram (photography)</small><strong>the_electronomadicsoul</strong></div><span class="arrow">↗</span>
-        </a>
+  <section id="contact">
+    <div class="wrap sec-head">
+      <h2>Contact</h2>
+      <div class="sec-body">
+        <p class="contact-lead">Happy to talk about projects, internships or anything around power and electronics. Email is the quickest: <a href="mailto:mutharasappanarunachalam@gmail.com">mutharasappanarunachalam@gmail.com</a></p>
+        <ul class="links">
+          <li><a href="https://www.linkedin.com/in/mutharasappan-arunachalam/" target="_blank" rel="noopener"><small>LinkedIn</small><b>mutharasappan-arunachalam</b></a></li>
+          <li><a href="https://github.com/25e910-a11y" target="_blank" rel="noopener"><small>GitHub</small><b>25e910-a11y</b></a></li>
+          <li><a href="https://www.instagram.com/the_electronomadicsoul/" target="_blank" rel="noopener"><small>Instagram, photography</small><b>the_electronomadicsoul</b></a></li>
+        </ul>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="wrap">
-  <span>© 2026 Mutharasappan Arunachalam</span>
-  <span>Coimbatore, India</span>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mutharasappan Arunachalam</span>
+    <span>Coimbatore, India</span>
+  </div>
 </footer>
+
+<script>
+  // Draws three sine waves 120 degrees apart (R, Y, B) across the hero.
+  (function(){
+    var svg=document.getElementById('wave'); if(!svg) return;
+    var W=1000, mid=60, amp=48, cycles=2.5, steps=300;
+    var shifts=[0,-2*Math.PI/3,2*Math.PI/3];
+    svg.querySelectorAll('path').forEach(function(p,i){
+      var d='';
+      for(var s=0;s<=steps;s++){
+        var x=s/steps*W, y=mid-amp*Math.sin(x/W*cycles*2*Math.PI+shifts[i]);
+        d+=(s?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+      }
+      p.setAttribute('d',d);
+    });
+  })();
+</script>
 </body>
 </html>
