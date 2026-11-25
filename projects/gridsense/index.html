@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GridSense: 3-phase power monitoring and fault localisation | Mutharasappan Arunachalam</title>
+  <meta name="description" content="GridSense watches a 3-phase supply panel by panel and tells maintenance staff which panel and which phase has a problem. Vishwakarma Awards 2026-27 entry by Mutharasappan Arunachalam, PSG College of Technology.">
+  <meta name="author" content="Mutharasappan Arunachalam">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="canonical" href="https://25e910-a11y.github.io/mutharasappan.github.io/projects/gridsense/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mutharasappan Arunachalam">
+  <meta property="og:title" content="GridSense: 3-phase power monitoring and fault localisation">
+  <meta property="og:description" content="Finds the abnormal phase, says which panel it is on, and keeps a record until the repair is done and checked. Vishwakarma Awards 2026-27, Stage 3.">
+  <meta property="og:url" content="https://25e910-a11y.github.io/mutharasappan.github.io/projects/gridsense/">
+  <meta property="og:image" content="https://25e910-a11y.github.io/mutharasappan.github.io/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/gridsense/#project",
+        "name": "GridSense",
+        "alternateName": "GridSense, distributed electrical monitoring and fault localisation system",
+        "description": "A 3-phase power monitoring and fault localisation system that reports the abnormal phase and the panel it is on, and tracks the repair until readings are back to normal.",
+        "url": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/gridsense/",
+        "creator": {
+          "@type": "Person",
+          "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/#person",
+          "name": "Mutharasappan Arunachalam"
+        },
+        "sourceOrganization": { "@type": "CollegeOrUniversity", "name": "PSG College of Technology" },
+        "keywords": "3-phase power monitoring, fault localisation, PZEM-004T, ESP32-S3, IoT, FastAPI, smart grid, Vishwakarma Awards",
+        "isBasedOn": "https://github.com/25e910-a11y/GridSense",
+        "dateModified": "2026-11-25"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Mutharasappan Arunachalam", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/#projects" },
+          { "@type": "ListItem", "position": 3, "name": "GridSense", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/gridsense/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231C211E'/><path d='M8 32 Q17 12 26 32 T44 32 T62 32' fill='none' stroke='%23C62F2A' stroke-width='5' stroke-linecap='round'/><path d='M2 32 Q11 52 20 32 T38 32 T56 32' fill='none' stroke='%23E0A100' stroke-width='5' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/project.css">
+</head>
+<body>
+  <div class="top"><div class="in">
+    <a href="../../">Mutharasappan AR</a>
+    <a href="../../#projects">All projects</a>
+  </div></div>
+
+  <main>
+    <p class="crumbs"><a href="../../">Home</a> / <a href="../../#projects">Projects</a> / GridSense</p>
+    <h1>GridSense</h1>
+    <p class="lead">A system that watches a 3-phase supply panel by panel and tells maintenance staff which panel and which phase has a problem, before someone has to go looking for it.</p>
+    <ul class="meta">
+      <li class="lamp progress">Prototype in progress</li>
+      <li>Vishwakarma Awards 2026-27, Stage 3</li>
+      <li>Sustainable Energy: Smart Grids &amp; Decentralised Power Distribution</li>
+      <li>PSG College of Technology, Coimbatore</li>
+    </ul>
+
+    <h2>The problem</h2>
+    <p>In a campus, hospital or factory, an electrical problem usually gets found when something visibly stops working. The meters that are installed report how much energy was used. They don't say which panel or which phase started drifting, or when. So someone walks from board to board looking for it.</p>
+    <p>Electrical faults are a steady cause of fires in India. Short circuit was given as the cause of 1,567 of the 7,566 fires recorded in 2022, and of 1,780 fires in 2023 (source: NCRB, Accidental Deaths &amp; Suicides in India, 2022 and 2023). Finding a problem early matters.</p>
+
+    <h2>What GridSense does</h2>
+    <p>Each panel gets a small node that reads voltage, current, power, energy, frequency and power factor on all three phases, plus the enclosure temperature. The node sends every reading to a backend, which checks it and says exactly where the problem is:</p>
+    <ol class="path" aria-label="How GridSense says where">
+      <li>Campus</li><li>Block</li><li>Floor</li><li>Panel</li><li>Phase R / Y / B</li>
+    </ol>
+    <p>Every event is logged with the panel, phase, value and time. Maintenance is alerted, a work order is assigned, and the work order closes only after a new reading from that phase is back to normal.</p>
+
+    <h2>Alarm rules</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Check</th><th>Default limit</th></tr></thead>
+      <tbody>
+        <tr><td>Undervoltage</td><td>Below 195.5 V (15% under 230 V)</td></tr>
+        <tr><td>Overvoltage</td><td>Above 253 V (10% over 230 V)</td></tr>
+        <tr><td>Phase imbalance</td><td>Above 10%</td></tr>
+        <tr><td>Loss of voltage</td><td>15 V or less, and only when another phase still has healthy voltage</td></tr>
+        <tr><td>Enclosure temperature</td><td>65 °C, warning only</td></tr>
+        <tr><td>Device offline</td><td>No reading for 120 s</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>A meter module that stops answering is logged as a sensor fault, never as a lost phase. Limits can be changed per device, and a new device can run in log-only mode while its limits are checked against a reference meter.</p>
+
+    <h2>Hardware</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Part</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>Seeed XIAO ESP32-S3</td><td>Node controller and Wi-Fi</td></tr>
+        <tr><td>3 x PZEM-004T V4 with CTs</td><td>One meter per phase, Modbus-RTU on one serial bus</td></tr>
+        <tr><td>DS18B20</td><td>Enclosure temperature</td></tr>
+        <tr><td>DS3231</td><td>Keeps time when the network drops</td></tr>
+        <tr><td>3 x SSR-40DA</td><td>In the design, kept off until a safety review</td></tr>
+        <tr><td>Hi-Link 5 V supply and LiPo cell</td><td>Power with battery backup</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2>Software</h2>
+    <p>The backend is written in Python with FastAPI and PostgreSQL. The dashboard is React with TypeScript and shows live readings per phase, faults, work orders and the campus layout. A built-in simulator sends test readings, which are stored and shown as demo data. The code is on GitHub.</p>
+
+    <h2>Where it stands</h2>
+    <p>GridSense cleared Stage 1 and Stage 2 of the Vishwakarma Awards 2026-27. The backend, dashboard and database run on a laptop and the backend tests pass. Our team is now building the working hardware prototype for the Stage 3 submission in December 2026.</p>
+
+    <div class="note"><p>GridSense only monitors and alerts. It does not protect anything and does not replace fuses, MCBs, earthing or proper isolation. All mains work is done under qualified supervision.</p></div>
+
+    <div class="cta">
+      <a href="https://github.com/25e910-a11y/GridSense">Code on GitHub</a>
+      <a href="../../#contact">Contact me</a>
+    </div>
+
+    <div class="more">
+      <h2>Other projects</h2>
+      <ul>
+        <li><a href="../tod-auto-pilot/">ToD Auto-Pilot: load management for Time-of-Day tariffs</a></li>
+        <li><a href="../river-waste-sparkathon/">River waste capture and source tracing (1st place, Sparkathon 2.0)</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer>Mutharasappan Arunachalam, B.E. Electrical and Electronics Engineering, PSG College of Technology, Coimbatore.</footer>
+</body>
+</html>
