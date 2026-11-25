@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToD Auto-Pilot: load shifting for Time-of-Day electricity tariffs | Mutharasappan Arunachalam</title>
+  <meta name="description" content="ToD Auto-Pilot moves loads that can wait into cheaper Time-of-Day tariff hours to bring the electricity bill down. ESP32, PZEM-004T, RTC and SSR. Built by Mutharasappan Arunachalam, PSG College of Technology.">
+  <meta name="author" content="Mutharasappan Arunachalam">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="canonical" href="https://25e910-a11y.github.io/mutharasappan.github.io/projects/tod-auto-pilot/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mutharasappan Arunachalam">
+  <meta property="og:title" content="ToD Auto-Pilot: load shifting for Time-of-Day tariffs">
+  <meta property="og:description" content="A device that moves loads that can wait into cheaper hours. Version 2 monitors and controls three loads at a time.">
+  <meta property="og:url" content="https://25e910-a11y.github.io/mutharasappan.github.io/projects/tod-auto-pilot/">
+  <meta property="og:image" content="https://25e910-a11y.github.io/mutharasappan.github.io/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/tod-auto-pilot/#project",
+        "name": "ToD Auto-Pilot",
+        "description": "A device that moves loads that can wait into cheaper Time-of-Day tariff hours to bring the electricity bill down. Version 2 monitors and controls three loads at a time.",
+        "url": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/tod-auto-pilot/",
+        "creator": {
+          "@type": "Person",
+          "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/#person",
+          "name": "Mutharasappan Arunachalam"
+        },
+        "keywords": "Time-of-Day tariff, ToD, load shifting, demand side management, ESP32, PZEM-004T, energy saving",
+        "dateModified": "2026-11-25"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Mutharasappan Arunachalam", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/#projects" },
+          { "@type": "ListItem", "position": 3, "name": "ToD Auto-Pilot", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/tod-auto-pilot/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231C211E'/><path d='M8 32 Q17 12 26 32 T44 32 T62 32' fill='none' stroke='%23C62F2A' stroke-width='5' stroke-linecap='round'/><path d='M2 32 Q11 52 20 32 T38 32 T56 32' fill='none' stroke='%23E0A100' stroke-width='5' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/project.css">
+</head>
+<body>
+  <div class="top"><div class="in">
+    <a href="../../">Mutharasappan AR</a>
+    <a href="../../#projects">All projects</a>
+  </div></div>
+
+  <main>
+    <p class="crumbs"><a href="../../">Home</a> / <a href="../../#projects">Projects</a> / ToD Auto-Pilot</p>
+    <h1>ToD Auto-Pilot</h1>
+    <p class="lead">A device that moves loads that can wait into the cheaper hours of a Time-of-Day tariff, to bring the electricity bill down.</p>
+    <ul class="meta">
+      <li class="lamp built">Built, version 2</li>
+      <li>Load management</li>
+      <li>PSG College of Technology, Coimbatore</li>
+    </ul>
+
+    <h2>The problem</h2>
+    <p>Under a Time-of-Day (ToD) tariff, the same unit of electricity costs more at peak hours and less at off-peak hours. Many loads don't need to run at a fixed time: a pump filling a tank, a water heater, a battery charger. If they run at peak hours by habit, the bill is higher than it needs to be.</p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li>Keeps the time of day with a real-time clock, so it knows which tariff period it is in.</li>
+      <li>Measures the power each load draws with a PZEM-004T energy meter module.</li>
+      <li>Switches the loads that can wait into the cheaper hours through SSRs, relays and contactors.</li>
+    </ul>
+    <p>Version 2 monitors and controls three loads at a time.</p>
+
+    <h2>Parts</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Part</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>ESP32</td><td>Controller</td></tr>
+        <tr><td>PZEM-004T</td><td>Voltage, current, power and energy for each load</td></tr>
+        <tr><td>RTC module</td><td>Time of day for the tariff periods</td></tr>
+        <tr><td>SSR, relays and contactors</td><td>Switching the loads</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="cta">
+      <a href="../../#contact">Ask me about it</a>
+    </div>
+
+    <div class="more">
+      <h2>Other projects</h2>
+      <ul>
+        <li><a href="../gridsense/">GridSense: 3-phase power monitoring and fault localisation</a></li>
+        <li><a href="../river-waste-sparkathon/">River waste capture and source tracing (1st place, Sparkathon 2.0)</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer>Mutharasappan Arunachalam, B.E. Electrical and Electronics Engineering, PSG College of Technology, Coimbatore.</footer>
+</body>
+</html>

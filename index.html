@@ -35,7 +35,7 @@
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "url": "https://25e910-a11y.github.io/mutharasappan.github.io/",
-    "dateModified": "2026-11-23",
+    "dateModified": "2026-11-25",
     "mainEntity": {
       "@type": "Person",
       "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/#person",
@@ -169,6 +169,10 @@
     h1{margin:0;font-weight:850;font-variation-settings:"wdth" 125;
       font-size:clamp(1.6rem,calc((min(100vw,1200px) - 2*var(--gutter)) / 10.2),7rem);line-height:.9;letter-spacing:-.02em}
     h1 span{display:block}
+    .project h3 a{color:inherit;text-decoration:none}
+    .project h3 a:hover{text-decoration:underline}
+    .read-more{margin:10px 0 0;font-weight:700}
+    .read-more a{color:var(--b)}
     .intro{margin:0;max-width:34em;font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--text)}
     .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
     .btn{display:inline-block;padding:11px 18px;border-radius:8px;border:1.5px solid var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;transition:background .15s,color .15s}
@@ -438,16 +442,17 @@
       <div class="sec-body">
         <article class="project">
           <div class="project-head">
-            <h3>GridSense</h3>
+            <h3><a href="projects/gridsense/">GridSense</a></h3>
             <span class="lamp progress">Prototype in progress</span>
           </div>
           <p class="context">Power monitoring and fault localisation. Vishwakarma Awards 2026-27 entry, Smart Grids &amp; Decentralised Power Distribution.</p>
           <p class="desc">A system that monitors a power network and narrows down where a fault has happened. Our team is building the working prototype for the Stage 3 submission in December 2026.</p>
+          <p class="read-more"><a href="projects/gridsense/">How GridSense works</a></p>
         </article>
 
         <article class="project">
           <div class="project-head">
-            <h3>River waste capture and pollution source localisation</h3>
+            <h3><a href="projects/river-waste-sparkathon/">River waste capture and pollution source localisation</a></h3>
             <span class="lamp design">Design, won 1st place</span>
           </div>
           <p class="context">Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad. Team PSG CT 2.</p>
@@ -461,16 +466,18 @@
             <span>Sensor nodes</span><i></i><span>LoRa</span><i></i><span>Gateway</span><i></i><span>Server</span><i></i><span>Map dashboard</span>
           </div>
           <p class="parts"><b>Parts and tools:</b> ESP32-S3, LoRa, MQTT, YOLO-nano, solar with MPPT</p>
+          <p class="read-more"><a href="projects/river-waste-sparkathon/">More about the Sparkathon design</a></p>
         </article>
 
         <article class="project">
           <div class="project-head">
-            <h3>ToD Auto-Pilot</h3>
+            <h3><a href="projects/tod-auto-pilot/">ToD Auto-Pilot</a></h3>
             <span class="lamp built">Built, version 2</span>
           </div>
           <p class="context">Load management for Time-of-Day tariffs.</p>
           <p class="desc">Electricity costs more at peak hours under Time-of-Day tariffs. ToD Auto-Pilot moves loads that can wait into the cheaper hours to bring the bill down. The second version monitors and controls three loads at a time.</p>
           <p class="parts"><b>Parts:</b> ESP32, PZEM-004T, RTC, SSR, relays and contactors</p>
+          <p class="read-more"><a href="projects/tod-auto-pilot/">More about ToD Auto-Pilot</a></p>
         </article>
 
         <article class="project">
