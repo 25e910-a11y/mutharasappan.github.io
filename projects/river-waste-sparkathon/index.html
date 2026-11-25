@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>River waste capture and pollution source tracing, 1st place Sparkathon 2.0, IIT ISM Dhanbad | Mutharasappan Arunachalam</title>
+  <meta name="description" content="A river network that catches plastic without harming fish and points to the stretch of river the waste comes from. Won 1st place at Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad. Team PSG CT 2, PSG College of Technology.">
+  <meta name="author" content="Mutharasappan Arunachalam">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="canonical" href="https://25e910-a11y.github.io/mutharasappan.github.io/projects/river-waste-sparkathon/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Mutharasappan Arunachalam">
+  <meta property="og:title" content="River waste capture and source tracing: 1st place, Sparkathon 2.0">
+  <meta property="og:description" content="Catches plastic, lets fish pass, and ranks the river stretches the waste is coming from. Concetto'26, IIT (ISM) Dhanbad.">
+  <meta property="og:url" content="https://25e910-a11y.github.io/mutharasappan.github.io/projects/river-waste-sparkathon/">
+  <meta property="og:image" content="https://25e910-a11y.github.io/mutharasappan.github.io/assets/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/river-waste-sparkathon/#project",
+        "name": "River waste capture and pollution source localisation",
+        "description": "A network of river nodes that diverts plastic waste while letting fish pass, and ranks the likely source stretches using waste counts, flow and travel time between nodes.",
+        "url": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/river-waste-sparkathon/",
+        "creator": {
+          "@type": "Person",
+          "@id": "https://25e910-a11y.github.io/mutharasappan.github.io/#person",
+          "name": "Mutharasappan Arunachalam"
+        },
+        "contributor": { "@type": "Person", "name": "D K Mosi Keeran" },
+        "award": "1st place, Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad",
+        "keywords": "river waste, plastic pollution, source localisation, LoRa, ESP32-S3, YOLO-nano, Sparkathon, Concetto, IIT ISM Dhanbad",
+        "dateModified": "2026-11-25"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Mutharasappan Arunachalam", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/#projects" },
+          { "@type": "ListItem", "position": 3, "name": "River waste capture (Sparkathon 2.0)", "item": "https://25e910-a11y.github.io/mutharasappan.github.io/projects/river-waste-sparkathon/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231C211E'/><path d='M8 32 Q17 12 26 32 T44 32 T62 32' fill='none' stroke='%23C62F2A' stroke-width='5' stroke-linecap='round'/><path d='M2 32 Q11 52 20 32 T38 32 T56 32' fill='none' stroke='%23E0A100' stroke-width='5' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/project.css">
+</head>
+<body>
+  <div class="top"><div class="in">
+    <a href="../../">Mutharasappan AR</a>
+    <a href="../../#projects">All projects</a>
+  </div></div>
+
+  <main>
+    <p class="crumbs"><a href="../../">Home</a> / <a href="../../#projects">Projects</a> / River waste capture</p>
+    <h1>River waste capture and source tracing</h1>
+    <p class="lead">A network of river nodes that catches plastic without harming fish, and points to the stretch of river the waste is coming from.</p>
+    <ul class="meta">
+      <li class="lamp design">Design, won 1st place</li>
+      <li>Sparkathon 2.0, Concetto'26, IIT (ISM) Dhanbad, October 2026</li>
+      <li>Team PSG CT 2, with my classmate D K Mosi Keeran</li>
+    </ul>
+
+    <h2>The problem</h2>
+    <p>River cleanup usually starts after the waste is already in the river. Barriers and nets can catch some of it, but they can trap fish too, and they don't tell anyone where the waste entered the water. Without knowing the source, the same stretch keeps getting dirty.</p>
+
+    <h2>How it works</h2>
+    <ul>
+      <li><b>Collector node.</b> A camera with an on-device model looks at what is coming downstream. Waste is diverted into the collector. Fish, and anything the model isn't sure about, pass through.</li>
+      <li><b>Fish-safe barrier.</b> Floating walls let fish escape underneath, with a bubble, sound and LED barrier to steer them away.</li>
+      <li><b>Source tracing.</b> The idea comes from power lines. A travelling-wave fault locator finds a fault from the time a wave takes to reach each end. Here, waste counts, water flow and travel time between nodes are used the same way, to rank the river stretches most likely to be the source.</li>
+    </ul>
+
+    <h2>Data path</h2>
+    <ol class="path" aria-label="Data path">
+      <li>Sensor nodes</li><li>LoRa</li><li>Gateway</li><li>Server</li><li>Map dashboard</li>
+    </ol>
+    <p>The nodes run on solar power with MPPT charging, so they can sit on the river without a power line.</p>
+
+    <h2>Parts and tools</h2>
+    <p>ESP32-S3, LoRa, MQTT, YOLO-nano, solar panel with MPPT charge controller.</p>
+
+    <h2>Result</h2>
+    <p>The design won 1st place at Sparkathon 2.0, part of Concetto'26 at IIT (ISM) Dhanbad. At the same fest, I also won 3rd place in Aeroglide.</p>
+
+    <div class="cta">
+      <a href="../../#contact">Ask me about it</a>
+    </div>
+
+    <div class="more">
+      <h2>Other projects</h2>
+      <ul>
+        <li><a href="../gridsense/">GridSense: 3-phase power monitoring and fault localisation</a></li>
+        <li><a href="../tod-auto-pilot/">ToD Auto-Pilot: load management for Time-of-Day tariffs</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer>Mutharasappan Arunachalam, B.E. Electrical and Electronics Engineering, PSG College of Technology, Coimbatore.</footer>
+</body>
+</html>
